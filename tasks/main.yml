@@ -1,0 +1,28 @@
+---
+- name: Docker | Install apt dependencies for ansible apt
+  apt:
+    pkg: "{{ item }}"
+    state: latest
+  with_items:
+    - python-apt
+    - apt-transport-https
+
+- name: Docker | Add docker.io apt key
+  apt_key:
+    keyserver: 'keyserver.ubuntu.com'
+    id: A88D21E9
+    state: present
+
+- name: Docker | Add docker.io ubuntu apt repository
+  apt_repository:
+    repo: 'deb https://get.docker.io/ubuntu docker main'
+    state: present
+
+- name: Docker | Make sure docker and its dependencies are installed
+  apt:
+    pkg: "{{ item }}"
+    state: present
+  with_items:
+    - lxc-docker
+
+
