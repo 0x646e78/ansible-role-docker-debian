@@ -1,28 +1,26 @@
 ---
-- name: Docker | Install apt dependencies for ansible apt
-  apt:
-    pkg: "{{ item }}"
-    state: latest
-  with_items:
-    - python-apt
-    - apt-transport-https
 
-- name: Docker | Add docker.io apt key
-  apt_key:
-    keyserver: 'keyserver.ubuntu.com'
-    id: A88D21E9
-    state: present
+- name: Update apt cache 
+  apt: update_cache=yes 
+  become: yes 
+ 
+- name: Install dependencies for docker-debian
+  apt:  
+    name: [ 'aptitude', 'apt-transport-https', 'ca-certificates', 'gnupg2', 'software-properties-common' ]
+    state: latest 
+  become: yes 
 
-- name: Docker | Add docker.io ubuntu apt repository
+- name: Add Docker GPG key
+  apt_key: 
+    url: https://download.docker.com/linux/debian/gpg
+  become: yes 
+
+- name: Add Docker APT repository
   apt_repository:
-    repo: 'deb https://get.docker.io/ubuntu docker main'
-    state: present
+    repo: deb [arch=amd64] https://download.docker.com/linux/{{ansible_distribution|lower}} {{ansible_distribution_release}} stable
+  become: yes 
 
-- name: Docker | Make sure docker and its dependencies are installed
+- name: Install Docker
   apt:
-    pkg: "{{ item }}"
-    state: present
-  with_items:
-    - lxc-docker
-
-
+    name: [ 'docker-ce', 'docker-ce-cli', 'containerd.io' ]
+  become: yes 
