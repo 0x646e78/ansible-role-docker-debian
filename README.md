@@ -1,7 +1,7 @@
-ansible-role-docker-debian
-==========================
+Install docker-ce on Debian via ansible
+===
 
-Ansible role to set up docker on Debian
+This is an ansible role to install docker-ce from the official apt repo.
 
 Use
 ---
@@ -16,6 +16,7 @@ or alternatively as a submodule in much the same way
 
 ```
 git submodule add https://github.com/auraltension/ansible-role-docker-debian.git roles/docker-debian
+git submodule init roles/docker-debian
 ```
 
 You can then include this role as part of a playbook such as:
@@ -43,9 +44,4 @@ General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program; if not, refer to: 
 https://www.gnu.org/licenses/gpl-2.0.html
-
-Credits
--------
-
-The install process for docker mostly guided by https://scottlinux.com/2014/05/04/how-to-install-and-run-docker-on-debian-wheezy/
 
