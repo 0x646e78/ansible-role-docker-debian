@@ -28,6 +28,22 @@ You can then include this role as part of a playbook such as:
     - docker-debian
 ```
 
+A basic localhost playbook and execution:
+
+vi `play.yml`
+```
+---
+
+- hosts: localhost
+  roles:
+    - /path/to/docker-debian
+  vars:
+    ansible_python_interpreter: /usr/bin/python
+```
+
+    ansible-playbook play.yml --ask-become-pass
+
+
 Licensing
 ---------
 
