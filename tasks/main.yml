@@ -16,8 +16,11 @@
   become: yes 
 
 - name: Add Docker APT repository
+  vars:
+    distro: "{{ 'stretch' if ansible_distribution_release == 'sid' else ansible_distribution_release }}"
   apt_repository:
-    repo: deb [arch=amd64] https://download.docker.com/linux/{{ansible_distribution|lower}} {{ansible_distribution_release}} stable
+    filename: "docker-ce"
+    repo: deb [arch=amd64] https://download.docker.com/linux/{{ansible_distribution|lower}} {{distro}} stable
   become: yes 
 
 - name: Install Docker
