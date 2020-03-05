@@ -3,6 +3,9 @@ Install docker-ce on Debian via ansible
 
 This is an ansible role to install docker-ce from the official apt repo.
 
+It's probably not very generic outside of Debian 10+, but please raise any 
+Issues or PR for any Linux system.
+
 Use
 ---
 
@@ -44,8 +47,14 @@ vi `play.yml`
     ansible-playbook play.yml --ask-become-pass
 
 
+Variables
+---
+
+`iptables`: Set to false to disable iptables being controlled by Docker.
+
+
 Licensing
----------
+---
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -60,4 +69,3 @@ General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program; if not, refer to: 
 https://www.gnu.org/licenses/gpl-2.0.html
-
