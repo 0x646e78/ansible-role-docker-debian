@@ -2,3 +2,4 @@
 
 # TODO Set to false to disable iptables
 iptables: true
+docker-compose: true

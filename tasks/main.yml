@@ -12,9 +12,16 @@
 
 - name: Pip Install dependencies for docker-debian
   pip:
-    name: [ 'docker', 'docker-compose', 'PyYAML' ]
+    name: [ 'docker', 'PyYAML' ]
     executable: pip3
     state: present
+
+- name: Pip Install docker-compose dependencies for docker-debian
+  pip:
+    name: [ 'docker-compose' ]
+    executable: pip3
+    state: present
+  when: docker-compose
 
 - name: Add Docker GPG key
   apt_key:
@@ -31,8 +38,15 @@
 
 - name: Install Docker
   apt:
-    name: [ 'docker-ce', 'docker-ce-cli', 'containerd.io', 'docker-compose' ]
+    name: [ 'docker-ce', 'docker-ce-cli', 'containerd.io' ]
   become: yes
+
+- name: Install Docker Compose
+  apt:
+    name: [ 'docker-compose' ]
+    executable: pip3
+    state: present
+  when: docker-compose
 
 - name: Create docker systemd service directory
   file:
@@ -62,3 +76,4 @@
     mode: 0644
   become: yes
   notify: Reload docker systemd service
+  when: not iptables
