@@ -1,6 +1,7 @@
 galaxy_info:
   author: DNX
   description: Install docker-ce on Debian
+  role_name: docker_debian
 
   # Choose a valid license ID from https://spdx.org - some suggested licenses:
   # - BSD-3-Clause (default)
