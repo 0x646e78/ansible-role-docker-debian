@@ -1,7 +1,7 @@
-Install docker-ce on Debian via ansible
+docker-debian
 =========
 
-This is an ansible role to install docker-ce from the official apt repo.
+This is an ansible role to install docker-ce, from the official apt repo, with various options, such as installing docker-compose and disabling the docker iptables dynamic rules.
 
 It's probably not very generic outside of Debian 10+, but please raise any 
 Issues or PR for any Debian based distro and version.
@@ -72,4 +72,4 @@ https://www.gnu.org/licenses/gpl-2.0.html
 Author Information
 ------------------
 
-DNX - [blog](http://blog.ghostinashell.com) - [Docker Hub](https://hub.docker.com/r/ectoplasm/plantuml)
+DNX - [blog](http://blog.ghostinashell.com) - [Docker Hub](https://hub.docker.com/r/ectoplasm/plantuml) - [Ansible Galaxy](https://galaxy.ansible.com/0x646e78)

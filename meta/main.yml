@@ -29,5 +29,6 @@ galaxy_info:
     - dockerce
     - dockercompose
     - debian10
+    - compose
 
 dependencies: []
