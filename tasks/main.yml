@@ -1,14 +1,14 @@
 ---
 
-- name: Update apt cache 
-  apt: update_cache=yes 
-  become: yes 
- 
+- name: Update apt cache
+  apt: update_cache=yes
+  become: yes
+
 - name: Install dependencies for docker-debian
-  apt:  
+  apt:
     name: [ 'aptitude', 'apt-transport-https', 'ca-certificates', 'gnupg2', 'software-properties-common' ]
-    state: latest 
-  become: yes 
+    state: latest
+  become: yes
 
 - name: Pip Install dependencies for docker-debian
   pip:
@@ -17,22 +17,22 @@
     state: present
 
 - name: Add Docker GPG key
-  apt_key: 
+  apt_key:
     url: https://download.docker.com/linux/debian/gpg
-  become: yes 
+  become: yes
 
 - name: Add Docker APT repository
   vars:
     distro: "{{ 'stretch' if ansible_distribution_release == 'sid' else ansible_distribution_release }}"
   apt_repository:
     filename: "docker-ce"
-    repo: deb [arch=amd64] https://download.docker.com/linux/{{ansible_distribution|lower}} {{distro}} stable
-  become: yes 
+    repo: deb [arch=amd64] https://download.docker.com/linux/{{ ansible_distribution|lower }} {{ distro }} stable
+  become: yes
 
 - name: Install Docker
   apt:
     name: [ 'docker-ce', 'docker-ce-cli', 'containerd.io', 'docker-compose' ]
-  become: yes 
+  become: yes
 
 - name: Create docker systemd service directory
   file:
