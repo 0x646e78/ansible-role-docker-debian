@@ -1,4 +1,4 @@
-docker-debian
+Ansible role to install docker ce (and/or compose) on Debian.
 =========
 
 This is an ansible role to install docker-ce, from the official apt repo, with various options, such as installing docker-compose and disabling the docker iptables dynamic rules.
@@ -8,19 +8,15 @@ Issues or PR for any Debian based distro and version.
 
 To install using ansible-galaxy:
 
-<coming soon>
-
-You can clone this repo directly into your ansible playbook by issuing
-
 ```
-git clone https://github.com/auraltension/ansible-role-docker-debian.git roles/docker-debian
+ansible-galaxy install 0x646e78.docker_debian
 ```
 
-or alternatively as a submodule in much the same way
+Alternatively, you could add this repo as a submodule:
 
 ```
 git submodule add https://github.com/auraltension/ansible-role-docker-debian.git roles/docker-debian
-git submodule init roles/docker-debian
+git submodule init roles/docker_debian
 ```
 
 Requirements
@@ -47,7 +43,7 @@ Example Playbook
 ---
 - hosts: my_server
   roles:
-    - { role: docker-debian, iptables: false }
+    - { role: docker_debian, iptables: false }
 ```
 
 License
