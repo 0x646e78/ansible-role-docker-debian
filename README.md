@@ -28,7 +28,7 @@ Role Variables
 --------------
 
 - `iptables: true` - Set to false to disable docker controlled iptables rules.
-- `docker-compose: false` - Set to true to install docker-compose
+- `install_compose: false` - Set to true to install docker-compose
 
 Dependencies
 ------------

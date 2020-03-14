@@ -21,7 +21,7 @@
     name: [ 'docker-compose' ]
     executable: pip3
     state: present
-  when: docker-compose
+  when: install_compose
 
 - name: Add Docker GPG key
   apt_key:
@@ -44,9 +44,8 @@
 - name: Install Docker Compose
   apt:
     name: [ 'docker-compose' ]
-    executable: pip3
     state: present
-  when: docker-compose
+  when: install_compose
 
 - name: Create docker systemd service directory
   file:
