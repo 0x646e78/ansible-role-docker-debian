@@ -76,3 +76,9 @@
   become: yes
   notify: Reload docker systemd service
   when: not iptables
+
+- name: Start Docker if it is not running
+  systemd:
+    name: docker
+    state: started
+  become: yes
